@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/main_1.css">
+    <title>EX_1</title>
+
+</head>
+
+<body>
+    <div class="dateContainer">
+        <p class="currentDate">05.07.2020</p>
+        <p class="currentTime">12:34:59</p>
+    </div>
+    <div class="stopwatchContainer">
+        <div class="contentBox">
+            <p class="stopwatchCounter">00:00:00</p>
+            <input type="button" value="start" class="button" id="stopwatchStart">
+            <input type="button" value="loop" class="button" id="stopwatchLoop">
+            <input type="button" value="stop" class="button" id="stopwatchStop">
+            <input type="button" value="reset" class="button" id="stopwatchReset">
+        </div>
+        <div class="contentBox">
+            <div class="loopsContainer"></div>
+        </div>
+    </div>
+    <div class="timerContainer">
+        <div class="contentBox">
+            <p class="timerValue"></p>
+            <p class="timerValueCapture">MINUTES</p>
+            <input type="button" value="+" class="button" id="addMinute">
+            <input type="button" value="-" class="button" id="removeMinute">
+        </div>
+        <div class="contentBox">
+            <div class="timerCountdown">00:00</div>
+            <input type="button" value="start" class="button" id="timerStart">
+            <input type="button" value="stop" class="button" id="timerStop">
+            <input type="button" value="reset" class="button" id="timerReset">
+        </div>
+    </div>
+    <script src="./script/common.js"></script>
+    <script src="./script/clock.js"></script>
+    <script src="./script/stopwatch.js"></script>
+    <script src="./script/timer.js"></script>
+</body>
+
+</html>
