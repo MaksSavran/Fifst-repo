@@ -1,45 +1,47 @@
-let stopwatchIntervalId;
-let stopwatchValue = 0;
+(() => {
+  let stopwatchIntervalId;
+  let stopwatchValue = 0;
 
-initStopwatch();
+  initStopwatch();
 
-function initStopwatch() {
-  getSelector("#stopwatchStart").addEventListener("click", startStopwatch);
-  getSelector("#stopwatchLoop").addEventListener("click", loopStopwatch);
-  getSelector("#stopwatchStop").addEventListener("click", stopStopwatch);
-  getSelector("#stopwatchReset").addEventListener("click", resetStopwatch);
-}
+  function initStopwatch() {
+    getSelector("#stopwatchStart").addEventListener("click", startStopwatch);
+    getSelector("#stopwatchLoop").addEventListener("click", loopStopwatch);
+    getSelector("#stopwatchStop").addEventListener("click", stopStopwatch);
+    getSelector("#stopwatchReset").addEventListener("click", resetStopwatch);
+  }
 
-function setStopwatchValue(timeInSeconds) {
-  stopwatchValue = timeInSeconds;
-  getSelector(".stopwatchCounter").innerHTML = renderNumbers(
-    timeInSeconds,
-    true
-  );
-}
+  function setStopwatchValue(timeInSeconds) {
+    stopwatchValue = timeInSeconds;
+    getSelector(".stopwatchCounter").innerHTML = renderNumbers(
+      timeInSeconds,
+      true
+    );
+  }
 
-function startStopwatch() {
-  if (stopwatchIntervalId) {
+  function startStopwatch() {
+    if (stopwatchIntervalId) {
+      clearInterval(stopwatchIntervalId);
+    }
+
+    stopwatchIntervalId = setInterval(() => {
+      setStopwatchValue(stopwatchValue + 1);
+    }, 1000);
+  }
+
+  function loopStopwatch() {
+    getSelector(".loopsContainer").innerHTML += `<p>${renderNumbers(
+      stopwatchValue,
+      true
+    )}</p>`;
+  }
+
+  function stopStopwatch() {
     clearInterval(stopwatchIntervalId);
   }
 
-  stopwatchIntervalId = setInterval(() => {
-    setStopwatchValue(stopwatchValue + 1);
-  }, 1000);
-}
-
-function loopStopwatch() {
-  getSelector(".loopsContainer").innerHTML += `<p>${renderNumbers(
-    stopwatchValue,
-    true
-  )}</p>`;
-}
-
-function stopStopwatch() {
-  clearInterval(stopwatchIntervalId);
-}
-
-function resetStopwatch() {
-  stopStopwatch();
-  setStopwatchValue(0);
-}
+  function resetStopwatch() {
+    stopStopwatch();
+    setStopwatchValue(0);
+  }
+})()
