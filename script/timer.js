@@ -28,9 +28,9 @@
     getSelector(".timerValue").innerHTML = timeInMinutes;
   }
 
-  function setTimerValue(timeInSeconds) {
-    timerValue = timeInSeconds;
-    getSelector(".timerCountdown").innerHTML = renderNumbers(timeInSeconds);
+  function setTimerValue(time) {
+    timerValue = time;
+    getSelector(".timerCountdown").innerHTML = renderNumbers(time);
   }
 
   function startTimer() {

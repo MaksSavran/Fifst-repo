@@ -4,17 +4,39 @@
   window.formatNumberValue = (value) => {
     return value < 10 ? "0" + value : value;
   }
-
-  window.convertSecondsToTime = (timeInSeconds) => {
-    let sec = Math.trunc(timeInSeconds % 60);
-    let min = Math.trunc((timeInSeconds / 60) % 60);
-    let hour = Math.trunc((timeInSeconds / 60 / 60) % 60);
-    return [min, sec, hour];
+  window.formatMSValue = (value) => {
+    if(value < 10){
+      return "00" + value;
+    }else{
+      return value;
+    }
+  }
+  window.convertSecondsToTime = (time, timeInMS) => {
+    let ms;
+    let sec;
+    let min;
+    let hour;
+    if (timeInMS) {
+      ms = Math.trunc(time % 100);
+      sec = Math.trunc((time /100) % 60);
+      min = Math.trunc((time / 6000 ) % 60);
+      hour = Math.trunc((time / 360000 ) % 60);
+    } else {
+      sec = Math.trunc(time % 60);
+      min = Math.trunc((time / 60) % 60);
+      hour = Math.trunc((time / 60 / 60) % 60);
+    }
+    console.log('min', min);
+    console.log('sec', sec);
+    console.log('hour', hour);
+    console.log('ms', ms);
+    return [min, sec, hour, ms];
   }
 
-  window.renderNumbers = (timeInSeconds, showHours) => {
-    let [min, sec, hour] = convertSecondsToTime(timeInSeconds);
+  window.renderNumbers = (time, showHours, showMS) => {
+    let [min, sec, hour, ms] = convertSecondsToTime(time, showMS);
     let renderHours = showHours ? `${formatNumberValue(hour)}:` : "";
-    return `${renderHours}${formatNumberValue(min)}:${formatNumberValue(sec)}`;
+    let renderMS = showMS ? `:${formatMSValue(ms)}` : "";
+    return `${renderHours}${formatNumberValue(min)}:${formatNumberValue(sec)}${renderMS}`;
   }
 })(window);

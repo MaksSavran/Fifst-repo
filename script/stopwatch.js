@@ -1,5 +1,6 @@
 (() => {
   let stopwatchIntervalId;
+  //let timeInSeconds;
   let stopwatchValue = 0;
 
   initStopwatch();
@@ -11,11 +12,13 @@
     getSelector("#stopwatchReset").addEventListener("click", resetStopwatch);
   }
 
-  function setStopwatchValue(timeInSeconds) {
-    stopwatchValue = timeInSeconds;
+  function setStopwatchValue(time) {
+    console.log('timeMS', time);
+    stopwatchValue = time;
+    console.log('swValue', stopwatchValue);
     getSelector(".stopwatchCounter").innerHTML = renderNumbers(
-      timeInSeconds,
-      true
+      time,
+      true, true
     );
   }
 
@@ -25,14 +28,15 @@
     }
 
     stopwatchIntervalId = setInterval(() => {
-      setStopwatchValue(stopwatchValue + 1);
-    }, 1000);
+      setStopwatchValue(stopwatchValue + 1)
+    }, 10);
+    
   }
 
   function loopStopwatch() {
     getSelector(".loopsContainer").innerHTML += `<p>${renderNumbers(
       stopwatchValue,
-      true
+      true, true
     )}</p>`;
   }
 
