@@ -13,12 +13,11 @@
   }
 
   function setStopwatchValue(time) {
-    console.log('timeMS', time);
     stopwatchValue = time;
-    console.log('swValue', stopwatchValue);
     getSelector(".stopwatchCounter").innerHTML = renderNumbers(
       time,
-      true, true
+      true,
+      true
     );
   }
 
@@ -28,15 +27,15 @@
     }
 
     stopwatchIntervalId = setInterval(() => {
-      setStopwatchValue(stopwatchValue + 1)
+      setStopwatchValue(stopwatchValue + 1);
     }, 10);
-    
   }
 
   function loopStopwatch() {
     getSelector(".loopsContainer").innerHTML += `<p>${renderNumbers(
       stopwatchValue,
-      true, true
+      true,
+      true
     )}</p>`;
   }
 
@@ -48,4 +47,4 @@
     stopStopwatch();
     setStopwatchValue(0);
   }
-})()
+})();

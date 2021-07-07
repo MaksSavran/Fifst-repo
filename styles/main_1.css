@@ -12,10 +12,6 @@ body {
 p {
   font-size: 35px;
 }
-div{
-  display: inline-block;
-  width: 80px;
-}
 .dateContainer,
 .stopwatchContainer,
 .timerContainer {
@@ -47,9 +43,9 @@ div{
   width: 50%;
 }
 .stopwatchCounter {
-  margin-top: 10px;
-  margin-bottom: 100px;
+  margin: 15px 0 100px 27%;
   font-size: 80px;
+  text-align: left;
 }
 .loopsContainer {
   width: 75%;
