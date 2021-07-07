@@ -6,8 +6,12 @@
   }
   window.formatMSValue = (value) => {
     if(value < 10){
-      return "00" + value;
-    }else{
+      return "0" + value;
+    }
+    // else if(value < 100){
+    //   return "0" + value;
+    // }
+    else{
       return value;
     }
   }
@@ -36,7 +40,7 @@
   window.renderNumbers = (time, showHours, showMS) => {
     let [min, sec, hour, ms] = convertSecondsToTime(time, showMS);
     let renderHours = showHours ? `${formatNumberValue(hour)}:` : "";
-    let renderMS = showMS ? `:${formatMSValue(ms)}` : "";
+    let renderMS = showMS ? `:<div>${formatMSValue(ms)}</div>` : "";
     return `${renderHours}${formatNumberValue(min)}:${formatNumberValue(sec)}${renderMS}`;
   }
 })(window);

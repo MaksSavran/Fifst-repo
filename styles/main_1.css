@@ -12,6 +12,10 @@ body {
 p {
   font-size: 35px;
 }
+div{
+  display: inline-block;
+  width: 80px;
+}
 .dateContainer,
 .stopwatchContainer,
 .timerContainer {
