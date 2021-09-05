@@ -1,2 +1,0 @@
-# GIT Lesson
-some text
